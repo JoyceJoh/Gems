@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://i.ibb.co/KWZ6k9t/game-508.jpg');
+            background-size: 100% 100%; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            box-sizing: border-box;
+            padding: 20px;
+            color: white;
+            
+        }
+
+        .circle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            top: 5%;
+        }
+
+        .circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid #333;
+            background-image: url('https://i.ibb.co/MgRDt6C/IMG-20241216-234338-052.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .label {
+            font-size: 36px;
+            position: absolute;
+            animation: bounce 1s infinite alternate;
+            color: red;
+            font-size: 2em;
+            font-weight: bold;
+            background-color: ;
+            border-radius: 5px;
+        }
+
+        .label.left {
+            left: 60px;
+            top: 25px;
+        }
+
+        .label.right {
+            right: 60px;
+            top: 25px;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        .rectangle-container {
+            display: flex;
+            justify-content: space-between;
+            width: calc(100% - 40px);
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        .rectangle {
+            width: 120px;
+            height: 50px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid #333;
+            border-radius: 5px;
+        }
+
+        .rectangle.left {
+            background-image: url('https://i.ibb.co/NZTczz6/images-25.jpg');
+        }
+
+        .rectangle.right {
+            background-image: url('https://i.ibb.co/KWZ6k9t/game-508.jpg');
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            width: calc(100% - 50px); 
+            max-width: 500px;
+            height: auto;
+            aspect-ratio: 1;
+            background-color: rgba(0, 123, 167, 0.4); 
+            border: 5px solid #333;
+            border-radius: 3px;
+        }
+
+        .box {
+           background-color: black;
+           border: 5px solid rgba(0, 123, 167, 0.5);
+           border-radius: 10px;
+}
+
+        .show-button, .reset-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: 'Dancing Script', cursive;
+            transition: background-color 0.3s ease;
+        }
+
+        .show-button {
+            background-color: green;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .show-button:hover {
+            background-color: #FFC107;
+        }
+
+        .reset-button {
+            background-color: red;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .reset-button:hover {
+            background-color: darkred;
+        }
+
+        .loading-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: black;
+            color: #FFC107;
+            padding: 20px;
+            border-radius: 8px;
+            display: none;
+            text-align: center;
+            width: 55%;
+            max-width: 400px;
+            box-sizing: border-box;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .circle-button {
+            position: fixed;
+            bottom: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .circle-button.left {
+            left: 40px;
+            background-image: url('https://i.ibb.co/5FPGSh2/YTLogo-old-new-animation.gif');
+        }
+
+        .circle-button.right {
+            right: 40px;
+            background-image: url('https://i.ibb.co/Gcs24BM/images-30.jpg');
+        }
+        swf {
+            color: #0ef;
+            font-size: 4em;
+            font-weight: 1000;
+            text-align: center;
+        }
+
+        marquee {
+            color: #0ef;
+            width: 100%;
+            font-weight: 1000;
+            position: absolute;
+            top: 0;
+        }
+
+        s {
+            color: #0ef;
+            font-size: 2em;
+            font-weight: 1000;
+            padding-right: 1px;
+        }
+    </style>
+</head>
+<body>
+    <marquee><swf>X</swf><s>.....KING.......HACK.</s></marquee>
+<div class="circle-container">
+    <div class="label left">Gems</div>
+    <div class="circle"></div>
+    <div class="label right">Mine</div>
+</div>
+<div class="rectangle-container">
+    <div class="rectangle left"></div>
+    <div class="rectangle right"></div>
+</div>
+<div class="container">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</div>
+<button class="show-button" onclick="showRandomImages()">SHOW MINE</button>
+<button class="reset-button" onclick="reconnectId()">RECONNECT ID</button>
+
+<div class="loading-message" id="loadingMessage"></div>
+
+<button class="circle-button left" onclick="window.location.href='https://www.youtube.com/@KH-Hi_1XBET1'"></button>
+<button class="circle-button right" onclick="window.location.href='https://t.me/xkinghackHi1xbet'"></button>
+
+<script>
+    const imageUrl = 'https://i.ibb.co/NYfzLQQ/IMG-20240802-WA0012.jpg'; // Replace with your image URL
+    let activeIndexes = [];
+    const totalBoxes = 26; // Total number of boxes in your container
+    let lastPredictedGroups = new Set();
+
+    function showRandomImages() {
+        const loadingMessage = document.getElementById('loadingMessage');
+        loadingMessage.textContent = 'GENERATING MINE...';
+        loadingMessage.style.display = 'block';
+
+        setTimeout(() => {
+            loadingMessage.style.display = 'none';
+
+            const boxes = document.querySelectorAll('.box');
+
+            // Clear previous predictions
+            activeIndexes.forEach(index => {
+                boxes[index].style.backgroundImage = '';
+            });
+
+            // Randomly choose between 4 or 5 predictions with advanced grouping and weighted randomness
+            const predictionCount = Math.random() < 0.6 ? 5 : 4; // 60% chance for 5 predictions
+            activeIndexes = getDynamicPredictions(predictionCount, boxes.length);
+
+            // Apply predictions to the grid
+            activeIndexes.forEach(index => {
+                boxes[index].style.backgroundImage = `url('${imageUrl}')`;
+                boxes[index].style.backgroundSize = 'cover';
+                boxes[index].style.backgroundPosition = 'center';
+                boxes[index].style.backgroundRepeat = 'no-repeat';
+            });
+        }, 3000); // Loading delay
+    }
+
+    function reconnectId() {
+        const loadingMessage = document.getElementById('loadingMessage');
+        loadingMessage.textContent = 'RECONNECTING ID TO THE GAME SERVER...';
+        loadingMessage.style.display = 'block';
+
+        setTimeout(() => {
+            const boxes = document.querySelectorAll('.box');
+            
+            boxes.forEach(box => {
+                box.style.backgroundImage = '';
+            });
+
+            activeIndexes = [];
+
+            loadingMessage.textContent = 'ID CONNECTED ✅';
+            
+            setTimeout(() => {
+                loadingMessage.style.display = 'none';
+            }, 1000);
+        }, 5000); // Reconnection delay
+    }
+
+    function getDynamicPredictions(count, max) {
+        const indexes = new Set();
+
+        // Advanced grouping strategy
+        const group1 = Array.from({ length: Math.floor(max / 3) }, (_, i) => i); // First 1/3
+        const group2 = Array.from({ length: Math.floor(max / 3) }, (_, i) => i + group1.length); // Middle 1/3
+        const group3 = Array.from({ length: max - group1.length - group2.length }, (_, i) => i + group1.length + group2.length); // Last 1/3
+
+        const groups = [group1, group2, group3];
+
+        while (indexes.size < count) {
+            // Prioritize groups not used in the last prediction
+            const availableGroups = groups.filter(group => !lastPredictedGroups.has(group));
+            const group = availableGroups.length
+                ? availableGroups[Math.floor(Math.random() * availableGroups.length)]
+                : groups[Math.floor(Math.random() * groups.length)]; // Fallback to any group
+
+            const randomIndex = group[Math.floor(Math.random() * group.length)];
+            indexes.add(randomIndex);
+        }
+
+        // Shuffle indexes slightly for unpredictability
+        const predictions = [...indexes].sort(() => Math.random() - 0.5);
+        
+        // Update the last predicted groups
+        lastPredictedGroups = new Set(predictions.map(index => {
+            if (group1.includes(index)) return group1;
+            if (group2.includes(index)) return group2;
+            return group3;
+        }));
+
+        return predictions;
+    }
+</script>
+</body>
+</html>

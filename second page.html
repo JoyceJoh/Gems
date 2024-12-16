@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buttons with Background Image and ID Input</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            background-image: url('https://i.ibb.co/KWZ6k9t/game-508.jpg');
+            background-size: 100% 100%; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 150px; /* Adjust this to position the header closer or farther from the top */
+            transition: top 0.3s ease;
+        }
+        .header.up {
+            top: 110px; /* Adjust this to how much higher you want the header to move */
+        }
+        .header-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .header .text {
+            color: red;
+            font-size: 2em;
+            font-weight: bold;
+            margin: 0 10px;
+            animation: float 2s ease-in-out infinite; 
+        }
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-image: url('https://i.ibb.co/MgRDt6C/IMG-20241216-234338-052.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .square-button {
+            width: 100px;
+            height: 50px;
+            border: none;
+            background-image: url('https://i.ibb.co/NZTczz6/images-25.jpg');
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            margin-top: 10px; 
+            border-radius: 4px;
+        }
+        .register-button {
+            width: 110px;
+            height: 50px;
+            border: none;
+            background-color: green;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px; 
+        }
+        #id-input {
+            width: 130px;
+            height: 30px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin-top: 20px; 
+            font-size: 14px;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .blinkAnimation {
+            animation: blink 1s ease-in-out infinite;
+        }
+        .footer {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 60px;
+            color: white;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+        swf {
+            color: #0ef;
+            font-size: 4em;
+            font-weight: 1000;
+            text-align: center;
+        }
+
+        marquee {
+            color: #0ef;
+            width: 100%;
+            font-weight: 1000;
+            position: absolute;
+            top: 0;
+        }
+
+        s {
+            color: #0ef;
+            font-size: 2em;
+            font-weight: 1000;
+            padding-right: 1px;
+        }
+    </style>
+</head>
+<body>
+    <marquee><swf>X</swf><s>.....KING.......HACK.</s></marquee>
+    <div class="header">
+        <div class="header-row">
+            <div class="text">Gems</div>
+            <div class="circle"></div>
+            <div class="text">Mine</div>
+        </div>
+        <input type="text" id="id-input" placeholder="Enter Bet ID">
+        <button class="square-button" onclick="checkID()"></button>
+        <div id="error-message" class="error-message"></div>
+        <button class="register-button" onclick="openRegisterURL()">REGISTER</button>
+    </div>
+    <div class="footer">
+        <p>THE PROMO CODE 🏆 MELHACK2 🏆 FOR 99% WIN</p>
+    </div>
+    <script>
+    function checkID() {
+        var idInput = document.getElementById('id-input').value;
+        var errorMessage = document.getElementById('error-message');
+        
+        // Regex to validate 9 or 10 digits
+        var isValidID = /^\d{9,10}$/.test(idInput);
+
+        if (isValidID) {
+            errorMessage.textContent = 'ID CONNECTED✅';
+            errorMessage.style.color = 'green';
+            errorMessage.classList.remove('blinkAnimation');
+            // Redirect to next page
+            window.location.href = 'minehack.html';
+        } else {
+            errorMessage.textContent = 'Invalid Bet ID';
+            errorMessage.style.color = 'white';
+            errorMessage.classList.add('blinkAnimation');
+        }
+    }
+
+    function openRegisterURL() {
+        // Open a URL in a new tab or window
+        var url = 'https://bit.ly/MELHACK2';
+        window.open(url, '_blank');
+    }
+
+    const idInput = document.getElementById('id-input');
+    idInput.addEventListener('focus', function() {
+        document.querySelector('.header').classList.add('up');
+    });
+
+    idInput.addEventListener('blur', function() {
+        setTimeout(function() {
+            if (!document.querySelector('input:focus')) {
+                document.querySelector('.header').classList.remove('up');
+            }
+        }, 200); // Delay to ensure the user has finished typing
+    });
+
+    window.addEventListener('resize', function() {
+        if (window.innerHeight > 500) {
+            document.querySelector('.header').classList.remove('up');
+        }
+    });
+</script>
+</body>
+</html>
